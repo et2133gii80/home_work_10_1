@@ -1,10 +1,13 @@
-from typing import List, Dict, Any
+from typing import Any
 
 
-def filter_by_state(data: List[Dict[str, Any]], state: str = "EXECUTED") -> List[Dict[str, Any]]:
-    """Функция, которая принимает список словарей и опционально значение
-    для ключа state(по умолчанию 'EXECUTED'"""
-    return [d for d in data if d.get("state") == state]
+def filter_by_state(list_dict: list[dict[str, Any]], state: str = "EXECUTED") -> Any:
+    """Фукнция принимает на вход список словарей и выдает новый список с заданным ключом"""
+    new_list = []
+    for key in list_dict:
+        if key.get("state") == state:
+            new_list.append(key)
+    return new_list
 
 
 def sort_by_date(date_list: list, reverse_list: bool = True) -> list | bool:
