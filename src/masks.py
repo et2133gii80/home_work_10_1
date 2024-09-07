@@ -15,5 +15,3 @@ def get_mask_account(account: Union[str]) -> str:
         return "**" + account[-4:]
     else:
         return "Некорректные данные"
-
-
