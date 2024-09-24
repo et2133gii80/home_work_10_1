@@ -1,10 +1,9 @@
-from unittest.mock import patch
-
 import os
+from unittest.mock import patch
 
 import pytest
 
-from src.utils import transaction_data, transaction_amount
+from src.utils import transaction_amount, transaction_data
 
 
 @pytest.fixture
