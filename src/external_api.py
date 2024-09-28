@@ -16,7 +16,7 @@ def conversion(trans1: Any) -> Any:
     code = trans1["operationAmount"]["currency"]["code"]
     to = "RUB"
     url = f"https://api.apilayer.com/exchangerates_data/convert?to={to}&from={code}&amount={amout}"
-    payload = {}
+    payload: dict[str, str] = {}
     response = requests.get(url, headers={"apikey": values}, data=payload)
     result = response.json()
     return result["result"]

@@ -1,3 +1,4 @@
+from typing import Any
 from unittest.mock import patch
 
 import pytest
@@ -6,7 +7,7 @@ from src.external_api import conversion
 
 
 @pytest.fixture
-def trans_3():
+def trans_3() -> Any:
     return {
         "id": 441945886,
         "state": "EXECUTED",
@@ -19,7 +20,7 @@ def trans_3():
 
 
 @patch("requests.get")
-def test_conversion(mock_get, trans_3):
+def test_conversion(mock_get: Any, trans_3: Any) -> Any:
     mock_get.return_value.json.return_value = {
         "success": True,
         "query": {"from": "USD", "to": "RUB", "amount": 8221.37},
