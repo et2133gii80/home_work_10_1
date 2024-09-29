@@ -40,8 +40,8 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 rel_csv_file_path = os.path.join(current_dir, "../data/transactions.csv")
 abs_file_path = os.path.abspath(rel_csv_file_path)
 
-# if __name__ == "__main__":
-#    print(get_transactions_csv(abs_file_path))
+if __name__ == "__main__":
+    print(get_transactions_csv(abs_file_path))
 
 
 def read_xlsx(file_path: str) -> list[dict]:
