@@ -1,7 +1,7 @@
 from typing import Iterator
 
 
-def filter_by_currency(transactions: list[dict], code: str = "USD") -> Iterator:
+def filter_by_currency(transactions: list[dict], code: str = "RUB") -> Iterator:
     if len(transactions) > 0:
         for transaction in transactions:
             if transaction["operationAmount"]["currency"]["code"] == code:
