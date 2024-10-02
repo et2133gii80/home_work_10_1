@@ -48,24 +48,20 @@ def file_excel() -> Any:
 @patch("src.work_with_csv_excel.read_xlsx")
 def test_read_xlsx(mock_value: Any, file_excel: Any) -> Any:
     mock_value.return_value = {
-        "id": "650703",
+        "id": "4699552.0",
         "state": "EXECUTED",
-        "date": "2023-09-05T11:30:32Z",
-        "amount": "16210",
-        "currency_name": "Sol",
-        "currency_code": "PEN",
-        "from": "Счет 58803664561298323391",
-        "to": "Счет 39745660563456619397",
-        "description": "Перевод организации",
+        "date": "2022-03-23T08:29:37Z",
+        "operationAmount": {"amount": "23423.0", "currency": {"name": "Peso", "code": "PHP"}},
+        "description": "Перевод с карты на карту",
+        "from": "Discover 7269000803370165",
+        "to": "American Express 1963030970727681",
     }
-    assert read_xlsx(file_excel)[0] == {
-        "id": "650703",
+    assert read_xlsx(file_excel)[-1] == {
+        "id": "4699552.0",
         "state": "EXECUTED",
-        "date": "2023-09-05T11:30:32Z",
-        "amount": "16210",
-        "currency_name": "Sol",
-        "currency_code": "PEN",
-        "from": "Счет 58803664561298323391",
-        "to": "Счет 39745660563456619397",
-        "description": "Перевод организации",
+        "date": "2022-03-23T08:29:37Z",
+        "operationAmount": {"amount": "23423.0", "currency": {"name": "Peso", "code": "PHP"}},
+        "description": "Перевод с карты на карту",
+        "from": "Discover 7269000803370165",
+        "to": "American Express 1963030970727681",
     }

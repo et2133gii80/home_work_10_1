@@ -44,10 +44,34 @@ if __name__ == "__main__":
 
 
 def read_xlsx(file_path: str) -> list[dict]:
-    with pd.ExcelFile(file_path, engine="openpyxl") as excel:
-        dataframe = pd.read_excel(excel, dtype=str)
-
-    return dataframe.to_dict("records")
+    transaction_list = []
+    try:
+        excel_data = pd.read_excel(file_path)
+        len_, b = excel_data.shape
+        for i in range(len_):
+            if excel_data["id"][i]:
+                transaction_list.append(
+                    {
+                        "id": str(excel_data["id"][i]),
+                        "state": excel_data["state"][i],
+                        "date": excel_data["date"][i],
+                        "operationAmount": {
+                            "amount": str(excel_data["amount"][i]),
+                            "currency": {
+                                "name": excel_data["currency_name"][i],
+                                "code": excel_data["currency_code"][i],
+                            },
+                        },
+                        "description": excel_data["description"][i],
+                        "from": excel_data["from"][i],
+                        "to": excel_data["to"][i],
+                    }
+                )
+            else:
+                continue
+    except Exception:
+        return []
+    return transaction_list
 
 
 # Получаем абсолютный путь до текущей директории

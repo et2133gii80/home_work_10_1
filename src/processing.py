@@ -10,10 +10,10 @@ def filter_by_state(list_dict: list[dict[str, Any]], state: str = "EXECUTED") ->
     return new_list
 
 
-def sort_by_date(date_list: list, reverse_list: bool = True) -> list | bool:
-    sorted_list = sorted(date_list, key=lambda date_dict: date_dict.get("date"), reverse=reverse_list)
-
-    """Функция, которая ринимает список словарей и необязательный параметр,
-    задающий порядок сортировки (по умолчанию — убывание)"""
-
-    return sorted_list
+def sort_by_date(operations: list[dict], reverse: bool = True) -> list[dict]:
+    """
+    Функция принимает на вход список словарей и возвращает новый список, в котором исходные
+    словари отсортированы по убыванию даты
+    """
+    operations = sorted(operations, key=lambda new_list_of_dict: new_list_of_dict["date"], reverse=reverse)
+    return operations

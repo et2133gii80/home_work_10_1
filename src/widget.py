@@ -5,15 +5,14 @@ from src.masks import get_mask_account, get_mask_card_number
 
 def mask_account_card(account_card: Union[str]) -> str:
     """Фукнция маскировки карт и счетов"""
-    if len(account_card.split()[-1]) == 16:
-        new_account_card = get_mask_card_number(account_card.split()[-1])
-        result = f"{account_card[:-16]}{new_account_card}"
-    elif len(account_card.split()[-1]) == 20:
-        new_number = get_mask_account(account_card.split()[-1])
-        result = f"{account_card[:-20]}{new_number}"
-    else:
-        return "Некорректные данные"
-    return result
+    parts = account_card.split()  # делим на части по пробелу
+    number = parts[-1]  # забираем последний элемент (там всегда номер карты или счёта)
+    if account_card.lower().startswith("счет"):  # если пришёл счёт - отдаём номер в ф-цию маскировки номера счёта
+        hidden_number = get_mask_account(number)
+    else:  # иначе отдаём номер в функцию маскироки карты и получаем скрытый вариант номера
+        hidden_number = get_mask_card_number(number)
+    parts[-1] = hidden_number  # подставляем скрытый номер обратно
+    return " ".join(parts)  # соединяем список в строку
 
 
 def get_date(date: Union[str]) -> str:
