@@ -1,15 +1,14 @@
 import os
 from typing import Any
-
 import requests
 from dotenv import load_dotenv
 
 load_dotenv()
 values = os.getenv("PASSWORD")
+
+
 # keys = os.getenv("API_KEY")
 # headers = {keys: values}
-
-
 def conversion(trans1: Any) -> Any:
     """Функция конвертации"""
     amout = trans1["operationAmount"]["amount"]
