@@ -1,50 +1,71 @@
-import pytest
-from src.product import Product
 from src.category import Category
+from src.product import Product
+
+new_product = Product.new_product(
+    {
+        "name": "Samsung Galaxy S23 Ultra",
+        "description": "256GB, Серый цвет, 200MP камера",
+        "price": 180000.0,
+        "quantity": 5,
+    }
+)
 
 
-@pytest.fixture
-def first_category():
-    return Category(
-        name="Смартфоны",
-        description="Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для удобства жизни",
-        list_product=[
-            Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5),
-            Product("Iphone 15", "512GB, Gray space", 210000.0, 8),
-            Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14),
-        ],
-    )
-
-
-@pytest.fixture
-def second_category():
-    return Category(
-        name="Телевизоры",
-        description="Современный телевизор, который позволяет наслаждаться просмотром, станет вашим другом и помощником",
-        list_product=[Product('55" QLED 4K', "Фоновая подсветка", 123000.0, 7)],
-    )
-
-
-def test_category_init_category_count_and_product_count(first_category, second_category):
-    assert first_category.name == "Смартфоны"
+def test_category_tv(category_tv, product_4):
+    assert category_tv.name == "Телевизоры"
     assert (
-        first_category.description
+        category_tv.description
+        == "Современный телевизор, который позволяет наслаждаться просмотром, станет вашим другом и помощником"
+    )
+    assert category_tv.products == [product_4]
+
+
+def test_category_smart(category_smart, product_1, product_2, product_3):
+    assert category_smart.name == "Смартфоны"
+    assert (
+        category_smart.description
         == "Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для удобства жизни"
     )
-    assert len(first_category.list_product) == 3
-    # подсчет количества категорий
-    assert first_category.category_count == 2
-    # подсчет количества продуктов
-    assert second_category.product_count == 4
+    assert category_smart.products == [product_1, product_2, product_3]
 
 
-@pytest.fixture
-def product():
-    return Product('55" QLED 4K', "Фоновая подсветка", 123000.0, 7)
+def test_category(category_smart, product_4):
+    category_smart.add_product(product_4)
+    category_smart.add_product(new_product)
+    assert Category.product_count == 9
 
 
-def test_product(product):
-    assert product.name == '55" QLED 4K'
-    assert product.description == "Фоновая подсветка"
-    assert product.price == 123000.0
-    assert product.quantity == 7
+product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
+product2 = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
+product3 = Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14)
+product4 = Product('55" QLED 4K', "Фоновая подсветка", 123000.0, 7)
+
+new_product = Product.new_product(
+    {
+        "name": "Samsung Galaxy S23 Ultra",
+        "description": "256GB, Серый цвет, 200MP камера",
+        "price": 180000.0,
+        "quantity": 5,
+    }
+)
+
+
+def test_samsung(product_samsung):
+    assert product_samsung.name == "Samsung Galaxy S23 Ultra"
+    assert product_samsung.description == "256GB, Серый цвет, 200MP камера"
+    assert product_samsung.price == 180000.0
+    assert product_samsung.quantity == 5
+
+
+def test_iphone(product_iphone):
+    assert product_iphone.name == "Iphone 15"
+    assert product_iphone.description == "512GB, Gray space"
+    assert product_iphone.price == 210000.0
+    assert product_iphone.quantity == 8
+
+
+def test_new_product():
+    new_product.price = 0
+    assert new_product.price == 180000
+    new_product.price = 12000
+    assert new_product.price == 12000
