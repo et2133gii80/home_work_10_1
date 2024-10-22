@@ -81,7 +81,7 @@ def test_category_getter(category_smart):
  'Xiaomi Redmi Note 11, 31000.0 руб. Остаток: 14 шт.\n')
 
 def test_str_category(category_smart):
-    assert category_smart.__str__() == "Смартфоны, количество продуктов: 3 шт."
+    assert category_smart.__str__() == "Смартфоны, количество продуктов: 27 шт."
 
 def test_add_product(product_1, product_2):
     assert product_1+product_2 == 2580000.0
