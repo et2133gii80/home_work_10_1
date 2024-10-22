@@ -69,3 +69,19 @@ def test_new_product():
     assert new_product.price == 180000
     new_product.price = 12000
     assert new_product.price == 12000
+
+#тесты для дз "магические методы"
+def test_str_product(product_1, product_2):
+    assert product_1.__str__() == "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт."
+    assert product_2.__str__() == "Iphone 15, 210000.0 руб. Остаток: 8 шт."
+
+def test_category_getter(category_smart):
+    assert category_smart.product == ('Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт.\n'
+ 'Iphone 15, 210000.0 руб. Остаток: 8 шт.\n'
+ 'Xiaomi Redmi Note 11, 31000.0 руб. Остаток: 14 шт.\n')
+
+def test_str_category(category_smart):
+    assert category_smart.__str__() == "Смартфоны, количество продуктов: 3 шт."
+
+def test_add_product(product_1, product_2):
+    assert product_1+product_2 == 2580000.0
