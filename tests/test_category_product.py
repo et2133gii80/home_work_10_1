@@ -1,5 +1,8 @@
+import pytest
+
 from src.category import Category
 from src.product import Product
+from tests.conftest import smartphone
 
 new_product = Product.new_product(
     {
@@ -85,3 +88,22 @@ def test_str_category(category_smart):
 
 def test_add_product(product_1, product_2):
     assert product_1+product_2 == 2580000.0
+
+def test_smartphone(smartphone):
+    assert smartphone.efficiency == 95.5
+    assert smartphone.color == "Серый"
+    assert smartphone.memory == 256
+    assert smartphone.model == "S23 Ultra"
+
+def test_glass(grass):
+    assert grass.country == "Россия"
+    assert grass.germination_period == "7 дней"
+    assert grass.color == "Зеленый"
+
+def test_add_products(smartphone, grass):
+    with pytest.raises(TypeError):
+        assert smartphone + grass
+
+def test_isinstance(category_tv):
+    with pytest.raises(TypeError):
+        assert category_tv.add_product()
