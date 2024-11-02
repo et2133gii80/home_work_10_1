@@ -1,8 +1,9 @@
 import pytest
 
 from src.category import Category
+from src.mixin_log import MixinLog
 from src.product import Product
-from tests.conftest import smartphone
+from tests.conftest import smartphone, product_1
 
 new_product = Product.new_product(
     {
@@ -73,21 +74,28 @@ def test_new_product():
     new_product.price = 12000
     assert new_product.price == 12000
 
-#тесты для дз "магические методы"
+
+# тесты для дз "магические методы"
 def test_str_product(product_1, product_2):
     assert product_1.__str__() == "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт."
     assert product_2.__str__() == "Iphone 15, 210000.0 руб. Остаток: 8 шт."
 
+
 def test_category_getter(category_smart):
-    assert category_smart.product == ('Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт.\n'
- 'Iphone 15, 210000.0 руб. Остаток: 8 шт.\n'
- 'Xiaomi Redmi Note 11, 31000.0 руб. Остаток: 14 шт.\n')
+    assert category_smart.product == (
+        "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт.\n"
+        "Iphone 15, 210000.0 руб. Остаток: 8 шт.\n"
+        "Xiaomi Redmi Note 11, 31000.0 руб. Остаток: 14 шт.\n"
+    )
+
 
 def test_str_category(category_smart):
     assert category_smart.__str__() == "Смартфоны, количество продуктов: 27 шт."
 
+
 def test_add_product(product_1, product_2):
-    assert product_1+product_2 == 2580000.0
+    assert product_1 + product_2 == 2580000.0
+
 
 def test_smartphone(smartphone):
     assert smartphone.efficiency == 95.5
@@ -95,15 +103,28 @@ def test_smartphone(smartphone):
     assert smartphone.memory == 256
     assert smartphone.model == "S23 Ultra"
 
+
 def test_glass(grass):
     assert grass.country == "Россия"
     assert grass.germination_period == "7 дней"
     assert grass.color == "Зеленый"
 
+
 def test_add_products(smartphone, grass):
     with pytest.raises(TypeError):
         assert smartphone + grass
 
+
 def test_isinstance(category_tv):
     with pytest.raises(TypeError):
         assert category_tv.add_product()
+
+
+def test_abc(abc):
+    assert abc.name == "Samsung Galaxy S23 Ultra"
+    assert abc.description == "256GB, Серый цвет, 200MP камера"
+    assert abc.quantity == 5
+
+
+def test_mixin_product(product1):
+    assert product1.__repr__() == "Product (Samsung Galaxy S23 Ultra, 256GB, Серый цвет, 200MP камера, 180000.0, 5)"
