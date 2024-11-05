@@ -128,3 +128,17 @@ def test_abc(abc):
 
 def test_mixin_product(product1):
     assert product1.__repr__() == "Product (Samsung Galaxy S23 Ultra, 256GB, Серый цвет, 200MP камера, 180000.0, 5)"
+
+
+def test_raises():
+    with pytest.raises(ValueError) as ex:
+        quantity_zero = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 0)
+        assert quantity_zero == f"{ex}: Товар с нулевым количеством не может быть добавлен"
+
+
+def test_average_price(category_smart):
+    assert category_smart.average_price() == 140333.3
+
+
+def test_average_price_with_zero_products(category_zero):
+    assert category_zero.average_price() == 0
