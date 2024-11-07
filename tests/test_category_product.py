@@ -1,9 +1,7 @@
 import pytest
 
 from src.category import Category
-from src.mixin_log import MixinLog
 from src.product import Product
-from tests.conftest import smartphone, product_1
 
 new_product = Product.new_product(
     {
