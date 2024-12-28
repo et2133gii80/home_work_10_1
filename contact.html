@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интернет-магазин</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        html, body {
+                height: 100%;
+                margin: 0;
+            }
+
+            .row {
+                height: 100%;
+                display: flex;
+            }
+
+            .col-2 {
+                background-color: #343a40;
+                color: #fff;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            .col-10 {
+                padding: 20px;
+    </style>
+</head>
+<body>
+    <div class="row">
+        <div class="col-2 bg-dark text-white">
+            <nav class="navbar">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">
+                        <img src="img/diamond_24dp_FFFF55.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                        <h4> Меню</h4>
+                        ____________________<br>
+                     </a>
+                </div>
+                <div>
+                     <nav class="nav flex-column mt-5">
+                      <a class="nav-link active" aria-current="page" href="project.html">Главная</a>
+                      <a class="nav-link" href="categories.html">Категории</a>
+                      <a class="nav-link" href="orders.html">Заказы</a>
+                      <a class="nav-link" href="contact.html">Контакты </a>
+                    </nav>
+                </div>
+            </nav>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-5">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#"><img src=img/sentiment_very_satisfied_24dp_0000F5.png width="36" height="36"></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+                                <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Пользователь
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                                    <li><a class="dropdown-item" href="#">Профиль</a></li>
+                                    <li><a class="dropdown-item" href="#">Выход</a></li>
+                            </li>
+                            </ul>
+                         </div>
+                    </div>
+                </nav>
+            </div>
+        <div class="col-10 mt-5">
+            <h1 style="text-align:center;">Контакты</h1>
+            <div class="row">
+                <div class="col-1 mt-5"></div>
+                <div class="col-5"> <!-- -->
+                    <div class="card text-bg-dark mt-5">
+                        <div class="card-body">
+                            <form>
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" placeholder="Имя">
+                                </div>
+                                <div class="input-group mb-3">
+                                  <span class="input-group-text" id="basic-addon1">@</span>
+                                  <input type="text" class="form-control" placeholder="Почта" aria-label="Username" aria-describedby="basic-addon1">
+                                </div>
+
+                                <div class="mb-3">
+                                    <textarea class="form-control" placeholder="Сообщение" rows="3"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Отправить</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1 mt-5"></div>
+                <div class="col-4 mt-5">
+                    <h4>Наши контакты</h4>
+                    На этой странице будут размещены наши контакты, Вы сможете нам звонить и разговаривать с нами!!!
+            </div>
+        </div>
+
+
+
+
+</body>
+</html>
